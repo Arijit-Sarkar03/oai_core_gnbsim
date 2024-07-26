@@ -66,6 +66,6 @@ sudo iptables -P FORWARD ACCEPT
 ```
 
 # To be continued
-Automating multiple UE connection using gnbsim
-current status: bash script (check generator.sh and start_containers.sh)
-aim: to generate multiple UEs using docker's features (on-going will be pushed soon)
+- Automating multiple UE connection using gnbsim
+- current status: bash script (check generator.sh and start_containers.sh)
+- aim: to generate multiple UEs using docker's features (on-going will be pushed soon)
