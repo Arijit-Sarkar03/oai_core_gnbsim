@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+    streaming:
+        container_name: "rtmp-streaming"
+        image: rtmp-hls:latest
+        environment:
+            - TZ=Asia/India
+            - HTTP_PROXY=http://172.27.10.67:3128/
+            - HTTPS_PROXY=http://172.27.10.67:3128/
+        ports:
+            - '1935:1935'
+            - '9080:8080'
+        volumes:
+            - ./players:/usr/local/nginx/html/players
