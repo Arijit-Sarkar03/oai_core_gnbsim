@@ -39,14 +39,14 @@ To check for successfull installation of docker engine
 ```
 sudo docker --version
 ```
+Now install docker compose:
 ```
 DOCKER_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 ```
 sudo chmod +x /usr/local/bin/docker-compose
-```
-```
+
 docker compose version
 ```
 ```
@@ -65,4 +65,7 @@ sudo sysctl net.ipv4.ip_forward=1
 sudo iptables -P FORWARD ACCEPT
 ```
 
-# To be continued # Oai-core_gnbsim
+# To be continued
+Automating multiple UE connection using gnbsim
+current status: bash script (check generator.sh and start_containers.sh)
+aim: to generate multiple UEs using docker's features (on-going will be pushed soon)
