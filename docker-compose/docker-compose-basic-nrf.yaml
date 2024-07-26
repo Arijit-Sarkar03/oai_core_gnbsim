@@ -1,3 +1,4 @@
+#updated basic-nrf file
 #version: '3.8'
 services:
     mysql:
@@ -169,7 +170,7 @@ services:
             - MNC=95
             - REGION_ID=128
             - AMF_SET_ID=1
-            - SERVED_GUAMI_MCC_0=208
+            - SERVED_GUAMI_MCC_0=208  #MCC & MNC values re-adjusted according to GNBSIM config
             - SERVED_GUAMI_MNC_0=95 # 95
             - SERVED_GUAMI_REGION_ID_0=128
             - SERVED_GUAMI_AMF_SET_ID_0=1
