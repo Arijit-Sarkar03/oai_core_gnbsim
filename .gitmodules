@@ -1,4 +1,0 @@
-[submodule "docker_open5gs"]
-	path = docker_open5gs
-	url = /home/arijit/Desktop/Work/oai_core_gnbsim/docker_open5gs
-	branch = main
