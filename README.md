@@ -85,10 +85,10 @@ Follow the steps mentioned below:
 Edit required changes in environment variables of `docker-compose-basic-nrf.yaml` file
 - Note: the `docker-compose-basic-nrf.yaml` files is already set up to be compatible with the gnbsim, hence no changes are required.
 To achieve compatibility with the gnbsim we have modified the following in the `docker-compose-basic-nrf.yaml` file:
-- comment all occurences of `HTTP_PROXY` and `HTTPS_PROXY` if you are not in a proxy based environment
-- Go to the service descriptions of `oai-amf` and fill up the appropriate values
-- Provide same `MCC `and` MNC` in the service descriptions of `oai-spgwu`
-- Search for the comments (i.e. #) to identify the values which might require adjustments
+  - comment all occurences of `HTTP_PROXY` and `HTTPS_PROXY` if you are not in a proxy based environment
+  - Go to the service descriptions of `oai-amf` and fill up the appropriate values
+  - Provide same `MCC `and` MNC` in the service descriptions of `oai-spgwu`
+  - Search for the comments (i.e. #) to identify the values which might require adjustments
 
 ### Start core services
 change directory to docker  compose i.e `cd docker-compose`
@@ -329,7 +329,11 @@ truncated Sample output
 [2024-07-28T08:59:46.513923] [AMF] [amf_app] [info ] |      2|       5GMM-REGISTERED|   208950000000032|               |               0|          2| 208, 95 | 524304|
 [2024-07-28T08:59:46.513931] [AMF] [amf_app] [info ] |      3|       5GMM-REGISTERED|   208950000000033|               |               0|          3| 208, 95 | 786448|
 [2024-07-28T08:59:46.513938] [AMF] [amf_app] [info ] |----------------------------------------------------------------------------------------------------------------|
+<<<<<<< HEAD
 [2024-07-28T08:59:46.513945] [AMF] [amf_app] [info ] 
+=======
+[2024-07-28T08:59:46.513945] [AMF] [amf_app] [info ]
+>>>>>>> f572957af645082c078cdccef4d61c5776a84268
 ```
 ### Recover the logs
 You can Recover the logs for one last time 
