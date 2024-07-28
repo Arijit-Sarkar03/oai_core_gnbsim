@@ -85,10 +85,10 @@ Follow the steps mentioned below:
 Edit required changes in environment variables of `docker-compose-basic-nrf.yaml` file
 - Note: the `docker-compose-basic-nrf.yaml` files is already set up to be compatible with the gnbsim, hence no changes are required.
 To achieve compatibility with the gnbsim we have modified the following in the `docker-compose-basic-nrf.yaml` file:
-- comment all occurences of `HTTP_PROXY` and `HTTPS_PROXY` if you are not in a proxy based environment
-- Go to the service descriptions of `oai-amf` and fill up the appropriate values
-- Provide same `MCC `and` MNC` in the service descriptions of `oai-spgwu`
-- Search for the comments (i.e. #) to identify the values which might require adjustments
+  - comment all occurences of `HTTP_PROXY` and `HTTPS_PROXY` if you are not in a proxy based environment
+  - Go to the service descriptions of `oai-amf` and fill up the appropriate values
+  - Provide same `MCC `and` MNC` in the service descriptions of `oai-spgwu`
+  - Search for the comments (i.e. #) to identify the values which might require adjustments
 
 ### Start core services
 change directory to docker  compose i.e `cd docker-compose`
