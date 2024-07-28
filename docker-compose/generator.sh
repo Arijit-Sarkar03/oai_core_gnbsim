@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+#version: '3.8'
+# services:
+
 # Base MSIN and IP address values
 BASE_MSIN=31
 BASE_IP=156
@@ -25,50 +29,43 @@ do
     MSIN=$(printf "%05d" $((BASE_MSIN + i)))
     IMSI="2089500000${MSIN}"
     IP_SUFFIX=$((BASE_IP + i))
-    COMPOSE_FILE="docker-compose-gnbsim_$((i+1)).yaml"
+    COMPOSE_FILE="docker-compose-gnbsim.yaml"      #_$((i+1))
     
-    cat <<EOL > $COMPOSE_FILE
-version: '3.8'
-services:
-    gnbsim_$((i+1)):
-        container_name: gnbsim_$((i+1))
-        image: gnbsim:latest
-        privileged: true
-        environment:
-            - MCC=208
-            - MNC=95
-            - GNBID=1
-            - TAC=0x00a000
-            - SST=222
-            - SD=00007b
-            - PagingDRX=v32
-            - RANUENGAPID=0
-            - IMEISV=35609204079514
-            - MSIN=00000$MSIN
-            - RoutingIndicator=1234
-            - ProtectionScheme=null
-            - KEY=0C0A34601D4F07677303652C0462535B
-            - OPc=63bfa50ee6523365ff14c1f45f88737d
-            - DNN=default
-            - URL=http://www.asnt.org:8080/
-            - NRCellID=1
-            - USE_FQDN=no
-            - NGAPPeerAddr=192.168.70.132
-            - GTPuLocalAddr=192.168.70.$IP_SUFFIX
-            - GTPuIFname=eth0
-        networks:
-            public_net:
-                ipv4_address: 192.168.70.$IP_SUFFIX
-        healthcheck:
-            test: /bin/bash -c "ip address show dev gtp-gnb"
-            interval: 10s
-            timeout: 5s
-            retries: 5
-
-networks:
-    public_net:
-        external:
-            name: demo-oai-public-net
+    cat <<EOL >> $COMPOSE_FILE
+gnbsim_$((i+1)):
+    container_name: gnbsim_$((i+1))
+    image: gnbsim:latest
+    privileged: true
+    environment:
+        - MCC=208
+        - MNC=95
+        - GNBID=1
+        - TAC=0x00a000
+        - SST=222
+        - SD=00007b
+        - PagingDRX=v32
+        - RANUENGAPID=0
+        - IMEISV=35609204079514
+        - MSIN=00000$MSIN
+        - RoutingIndicator=1234
+        - ProtectionScheme=null
+        - KEY=0C0A34601D4F07677303652C0462535B
+        - OPc=63bfa50ee6523365ff14c1f45f88737d
+        - DNN=default
+        - URL=http://www.asnt.org:8080/
+        - NRCellID=1
+        - USE_FQDN=no
+        - NGAPPeerAddr=192.168.70.132
+        - GTPuLocalAddr=192.168.70.$IP_SUFFIX
+        - GTPuIFname=eth0
+    networks:
+        public_net:
+            ipv4_address: 192.168.70.$IP_SUFFIX
+    healthcheck:
+        test: /bin/bash -c "ip address show dev gtp-gnb"
+        interval: 10s
+        timeout: 5s
+        retries: 5
 EOL
 
     AUTH_SUBSCRIPTION_ENTRY=$(cat <<EOL
