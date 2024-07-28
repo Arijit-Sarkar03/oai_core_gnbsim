@@ -95,11 +95,11 @@ def deploy(file_name, ct, extra_interface=False):
 
     if args.capture is None:
         # When no capture, just deploy all at once.
-        cmd = f'docker-compose -f {file_name} up -d'
+        cmd = f'docker compose -f {file_name} up -d'
         res = run_cmd(cmd, False)
     else:
         # First just deploy mysql container, all docker networks will be up.
-        cmd = f'docker-compose -f {file_name} up -d mysql'
+        cmd = f'docker compose -f {file_name} up -d mysql'
         res = run_cmd(cmd, False)
         if res is None:
             exit(f'\033[0;31m Incorrect/Unsupported executing command {cmd}')
@@ -123,7 +123,7 @@ def deploy(file_name, ct, extra_interface=False):
         cmd = f'sleep 20; sudo chmod 666 {args.capture}'
         run_cmd(cmd)
         # Finally deploy the rest of the network functions.
-        cmd = f'docker-compose -f {file_name} up -d'
+        cmd = f'docker compose -f {file_name} up -d'
         res = run_cmd(cmd, False)
     # sometimes first try does not go through
     if args.capture is not None:
@@ -135,7 +135,7 @@ def deploy(file_name, ct, extra_interface=False):
     logging.debug('\033[0;32m OAI 5G Core network started, checking the health status of the containers... takes few secs\033[0m....')
     notSilentForFirstTime = False
     for x in range(40):
-        cmd = f'docker-compose -f {file_name} ps -a'
+        cmd = f'docker compose -f {file_name} ps -a'
         res = run_cmd(cmd, notSilentForFirstTime)
         notSilentForFirstTime = True
         if res is None:
@@ -159,7 +159,7 @@ def undeploy(file_name):
         None
     """
     logging.debug('\033[0;34m UnDeploying OAI 5G core components\033[0m....')
-    cmd = f'docker-compose -f {file_name} down -t 0'
+    cmd = f'docker compose -f {file_name} down -t 0'
     res = run_cmd(cmd, False)
     if res is None:
         exit(f'\033[0;31m Incorrect/Unsupported executing command {cmd}')
