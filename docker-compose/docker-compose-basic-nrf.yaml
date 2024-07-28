@@ -73,15 +73,15 @@ services:
             - UDM_NAME=OAI_UDM
             - SBI_IF_NAME=eth0
             - SBI_PORT=80
-            - SBI_HTTP2_PORT=8080
-            - USE_HTTP2=no
             - UDM_VERSION_NB=v1
+            - SBI_HTTP2_PORT=8080
             - USE_FQDN_DNS=yes
+            - USE_HTTP2=no
+            - REGISTER_NRF=yes
             - UDR_IP_ADDRESS=192.168.70.136
             - UDR_PORT=80
             - UDR_VERSION_NB=v1
             - UDR_FQDN=oai-udr
-            - REGISTER_NRF=yes
             - NRF_IPV4_ADDRESS=192.168.70.130
             - NRF_PORT=80
             - NRF_API_VERSION=v1
@@ -111,14 +111,14 @@ services:
             - SBI_IF_NAME=eth0
             - SBI_PORT=80
             - SBI_API_VERSION=v1
-            - USE_HTTP2=no
             - SBI_HTTP2_PORT=8080
             - USE_FQDN_DNS=yes
+            - USE_HTTP2=no
+            - REGISTER_NRF=yes
             - UDM_IP_ADDRESS=192.168.70.137
             - UDM_PORT=80
             - UDM_VERSION_NB=v1
             - UDM_FQDN=oai-udm
-            - REGISTER_NRF=yes
             - NRF_IPV4_ADDRESS=192.168.70.130
             - NRF_PORT=80
             - NRF_API_VERSION=v1
@@ -417,7 +417,7 @@ services:
         tty: true
         networks:
             public_net:
-                ipv4_address: 192.168.70.160
+                ipv4_address: 192.168.70.139
 #    streaming:
 #        container_name: "rtmp-streaming"
 #        image: rtmp-hls:latest
