@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-    gnbsim:
-        container_name: gnbsim
+    gnbsim1:
+        container_name: gnbsim1
         image: gnbsim:latest
         privileged: true
         environment:
