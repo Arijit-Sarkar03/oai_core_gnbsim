@@ -377,6 +377,7 @@ The limitations of the generator.sh makes this script follow you some constraint
 - After following the first two constraints you are ready to execute the `generator.sh` script
 
 Let's Now get a hands on how to use the script
+## Using generator.sh 
 ### Step-1
 give executable permissions to the `generator.sh` file by executing the command:
 ```
