@@ -18,10 +18,10 @@ SQL_FILE="./database/oai_db3.sql"
 # Backup existing SQL file
 cp $SQL_FILE "${SQL_FILE}.bak"
 
-# Split the original SQL file at line 153 and line 308
+# Split the original SQL file at line 153 and line 208
 head -n 153 $SQL_FILE > temp1.sql
-tail -n +154 $SQL_FILE | head -n 155 > temp2.sql
-tail -n +306 $SQL_FILE > temp3.sql
+tail -n +154 $SQL_FILE | head -n 54 > temp2.sql
+tail -n +208 $SQL_FILE > temp3.sql
 
 COMPOSE_FILE="docker-compose-gnbsim.yaml"
 cat <<EOL >> $COMPOSE_FILE
@@ -99,16 +99,17 @@ networks:
       name: demo-oai-public-net
 EOL
 
-# Combine the temp files to create the updated SQL file
-cat temp1.sql temp2.sql temp3.sql > $SQL_FILE
-
 # Remove the trailing comma from the last AUTH_SUBSCRIPTION_ENTRY
 sed -i '$ s/,$/;/' temp1.sql
+
+# Combine the temp files to create the updated SQL file
+cat temp1.sql temp2.sql temp3.sql > $SQL_FILE
 
 # Clean up temp files
 rm temp1.sql temp2.sql temp3.sql
 
-sleep 2
+./deploy.sh
+
 for ((i=0; i<NUM_INSTANCES; i++)); do
   docker compose -f $COMPOSE_FILE up -d gnbsim$((i+1))
   sleep 6
