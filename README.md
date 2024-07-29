@@ -338,12 +338,12 @@ truncated Sample output
 ### Recover the logs
 You can Recover the logs for one last time 
 ```
-$: docker logs oai-amf > /tmp/oai/mini-gnbsim/amf.log 2>&1
-$: docker logs oai-smf > /tmp/oai/mini-gnbsim/smf.log 2>&1
-$: docker logs oai-upf > /tmp/oai/mini-gnbsim/upf.log 2>&1
-$: docker logs gnbsim > /tmp/oai/mini-gnbsim/gnbsim.log 2>&1
-$: docker logs gnbsim2 > /tmp/oai/mini-gnbsim/gnbsim2.log 2>&1
-$: docker logs gnbsim3 > /tmp/oai/mini-gnbsim/gnbsim3.log 2>&1
+$: docker logs oai-amf > /tmp/oai/gnbsim/amf.log 2>&1
+$: docker logs oai-smf > /tmp/oai/gnbsim/smf.log 2>&1
+$: docker logs oai-upf > /tmp/oai/gnbsim/upf.log 2>&1
+$: docker logs gnbsim > /tmp/oai/gnbsim/gnbsim.log 2>&1
+$: docker logs gnbsim2 > /tmp/oai/gnbsim/gnbsim2.log 2>&1
+$: docker logs gnbsim3 > /tmp/oai/gnbsim/gnbsim3.log 2>&1
 ```
 
 ## Undeploy network functions
