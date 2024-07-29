@@ -361,20 +361,23 @@ sudo python3 core-network.py --type stop-basic
 ```
 Everything is now shut down
 
-# Advanced Deployment - Multiple UE automated
+# Advanced Deployment - Automated multiple gnbsim connectivity
 This repo gives the tutorial on how to connect multiple UE's to the core using
 bash script `generator.sh`
 
-- Get inside the `docker-compose` directory by executing cd `docker-compose`
+- Get inside the `docker-compose` directory by executing `cd docker-compose`
 
 Under that directory you'll find the file name `generator.sh`
 
-The script makes your work easier, it provides sim configuration for you in the sql file as well as makes multiple containers of gnbsim in the `docker-compose-gnbsim.yaml` file
+The script makes your work easier, it provides sim configuration for you in the `oai_db3.sql` file as well as makes multiple containers of gnbsim in the `docker-compose-gnbsim.yaml` file
+## Constraints of `generator.sh` bash script
+The limitations of the generator.sh makes this script follow you some constraints mentioned below:
+- The `oai_db3.sql` file should have `NO` entries under `AuthenticationSubscription` and `SessionManagementSubscriptionData`, For reference there is a `oai_db3.sql.default` file under `./docker-compose/database` directory, you can use that file by removing the added extension `.default`
+- `The docker-compose-gnbsim.yaml` file should be Empty i.e the `contents should be erased` (`File should not be deleted`)
+- After following the first two constraints you are ready to execute the `generator.sh` script
 
-Let's get an hands on on how to use this script
-
+Let's Now get a hands on how to use the script
 ### Step-1
-
 give executable permissions to the `generator.sh` file by executing the command:
 ```
 sudo chmod +x generator.sh
@@ -384,22 +387,24 @@ sudo chmod +x generator.sh
 The script is designed considering there are no entries in `oai_db3.sql` and no
 gnbsim container present in the `docker-compose-gnbsim.yaml` file
 
-So make a backup file of `docker-compose-gnbsim.yaml` by copying `docker-compose-gnbsim.yaml` and then adding the extension `.bak`
+So make a backup file of existing `docker-compose-gnbsim.yaml` by copying `docker-compose-gnbsim.yaml` and then adding the extension `.bak`
 ```
 sample:
 
 docker-compose-gnbsim.yaml.bak
 ```
 Now simply clear the contents of `docker-compose-gnbsim.yaml` file
-- Note: Do not delete the entire file, clear the entire contents of it
+- Note: `DO NOT DELETE the file`. Clear the entire contents of it
 
 ### Step-3
 
-we have considered that there are no entries in the `oai_db3.sql` file
+we have considered that there are no entries under the `AuthenticationSubscription` and `SessionManagementSubscription` in the `oai_db3.sql` file
 
 Backup the `oai_db3.sql` file as well using the same `oai_db3.sql.bak` extension and working on a copy of it
+- Note: you can use the `oai_db3.sql.default` file it is preconfigured, you need to remove the `.default` extension and use it instead of the present `oai_db3.sql` file
 
-Then clear all the entries of the registered sim details already present in the sql file.
+Remove all the entries under the `AuthenticationSubscription` and `SessionManagementSubscription` if already present.
+- Note: treat the `oai_db3.sql.default` as a reference or sample for this task
 
 ### Step-4
 
@@ -420,15 +425,20 @@ Give it an input, Let's say : `10`
 ### Step-5
 Wait for the script to work as it has delay added to it don't run out of patience
 
-Now check for all the gnbsim containers if they are in healthy condition or not
+The containers will spin up one by one after a certain delay
+
+Once all the containers are up and running check for all the gnbsim containers if they are in healthy condition or not
 
 You can check for IP allocation of UE as learnt above
 
 Ping Test multiple container to check for connectivity
 ### Handling errors
 - Note-1: the oai-core can be unstable so if the core doesnot spin up healthy cancel the running script using `Ctrl + C` or `Ctrl + D`
-- Note-2: berfore re-using the script put down the core containers using the `python script` or `./down.sh`
+- Note-2: berfore re-using the script put down the core containers using the `sudo python3 core-network.py --type stop-basic` or `./down.sh`
 If any issue persists check the SQL file `oai_db3.sql` issues are generally over sim registration portion, correct for any syntax errors and then use the `generator.sh` script again
+
+#### Stictly follow the Constraints before running `generator.sh` again
+
 ### Step-6 - Undeploy
 #### Undeploy gnbsim
 Undeploy all the gnbsim container instances by executing the command:
