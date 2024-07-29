@@ -169,6 +169,176 @@ services:
         interval: 10s
         timeout: 5s
         retries: 5
+  gnbsim6:
+    container_name: gnbsim6
+    image: gnbsim:latest
+    privileged: true
+    environment:
+        - MCC=208
+        - MNC=95
+        - GNBID=6
+        - TAC=0x00a000
+        - SST=222
+        - SD=00007b
+        - PagingDRX=v32
+        - RANUENGAPID=0
+        - IMEISV=35609204079514
+        - MSIN=0000000036
+        - RoutingIndicator=1234
+        - ProtectionScheme=null
+        - KEY=0C0A34601D4F07677303652C0462535B
+        - OPc=63bfa50ee6523365ff14c1f45f88737d
+        - DNN=default
+        - URL=http://www.asnt.org:8080/
+        - NRCellID=1
+        - USE_FQDN=no
+        - NGAPPeerAddr=192.168.70.132
+        - GTPuLocalAddr=192.168.70.161
+        - GTPuIFname=eth0
+    networks:
+        public_net:
+            ipv4_address: 192.168.70.161
+    healthcheck:
+        test: /bin/bash -c "ip address show dev gtp-gnb"
+        interval: 10s
+        timeout: 5s
+        retries: 5
+  gnbsim7:
+    container_name: gnbsim7
+    image: gnbsim:latest
+    privileged: true
+    environment:
+        - MCC=208
+        - MNC=95
+        - GNBID=7
+        - TAC=0x00a000
+        - SST=222
+        - SD=00007b
+        - PagingDRX=v32
+        - RANUENGAPID=0
+        - IMEISV=35609204079514
+        - MSIN=0000000037
+        - RoutingIndicator=1234
+        - ProtectionScheme=null
+        - KEY=0C0A34601D4F07677303652C0462535B
+        - OPc=63bfa50ee6523365ff14c1f45f88737d
+        - DNN=default
+        - URL=http://www.asnt.org:8080/
+        - NRCellID=1
+        - USE_FQDN=no
+        - NGAPPeerAddr=192.168.70.132
+        - GTPuLocalAddr=192.168.70.162
+        - GTPuIFname=eth0
+    networks:
+        public_net:
+            ipv4_address: 192.168.70.162
+    healthcheck:
+        test: /bin/bash -c "ip address show dev gtp-gnb"
+        interval: 10s
+        timeout: 5s
+        retries: 5
+  gnbsim8:
+    container_name: gnbsim8
+    image: gnbsim:latest
+    privileged: true
+    environment:
+        - MCC=208
+        - MNC=95
+        - GNBID=8
+        - TAC=0x00a000
+        - SST=222
+        - SD=00007b
+        - PagingDRX=v32
+        - RANUENGAPID=0
+        - IMEISV=35609204079514
+        - MSIN=0000000038
+        - RoutingIndicator=1234
+        - ProtectionScheme=null
+        - KEY=0C0A34601D4F07677303652C0462535B
+        - OPc=63bfa50ee6523365ff14c1f45f88737d
+        - DNN=default
+        - URL=http://www.asnt.org:8080/
+        - NRCellID=1
+        - USE_FQDN=no
+        - NGAPPeerAddr=192.168.70.132
+        - GTPuLocalAddr=192.168.70.163
+        - GTPuIFname=eth0
+    networks:
+        public_net:
+            ipv4_address: 192.168.70.163
+    healthcheck:
+        test: /bin/bash -c "ip address show dev gtp-gnb"
+        interval: 10s
+        timeout: 5s
+        retries: 5
+  gnbsim9:
+    container_name: gnbsim9
+    image: gnbsim:latest
+    privileged: true
+    environment:
+        - MCC=208
+        - MNC=95
+        - GNBID=9
+        - TAC=0x00a000
+        - SST=222
+        - SD=00007b
+        - PagingDRX=v32
+        - RANUENGAPID=0
+        - IMEISV=35609204079514
+        - MSIN=0000000039
+        - RoutingIndicator=1234
+        - ProtectionScheme=null
+        - KEY=0C0A34601D4F07677303652C0462535B
+        - OPc=63bfa50ee6523365ff14c1f45f88737d
+        - DNN=default
+        - URL=http://www.asnt.org:8080/
+        - NRCellID=1
+        - USE_FQDN=no
+        - NGAPPeerAddr=192.168.70.132
+        - GTPuLocalAddr=192.168.70.164
+        - GTPuIFname=eth0
+    networks:
+        public_net:
+            ipv4_address: 192.168.70.164
+    healthcheck:
+        test: /bin/bash -c "ip address show dev gtp-gnb"
+        interval: 10s
+        timeout: 5s
+        retries: 5
+  gnbsim10:
+    container_name: gnbsim10
+    image: gnbsim:latest
+    privileged: true
+    environment:
+        - MCC=208
+        - MNC=95
+        - GNBID=10
+        - TAC=0x00a000
+        - SST=222
+        - SD=00007b
+        - PagingDRX=v32
+        - RANUENGAPID=0
+        - IMEISV=35609204079514
+        - MSIN=0000000040
+        - RoutingIndicator=1234
+        - ProtectionScheme=null
+        - KEY=0C0A34601D4F07677303652C0462535B
+        - OPc=63bfa50ee6523365ff14c1f45f88737d
+        - DNN=default
+        - URL=http://www.asnt.org:8080/
+        - NRCellID=1
+        - USE_FQDN=no
+        - NGAPPeerAddr=192.168.70.132
+        - GTPuLocalAddr=192.168.70.165
+        - GTPuIFname=eth0
+    networks:
+        public_net:
+            ipv4_address: 192.168.70.165
+    healthcheck:
+        test: /bin/bash -c "ip address show dev gtp-gnb"
+        interval: 10s
+        timeout: 5s
+        retries: 5
 networks:
   public_net:
     external:
