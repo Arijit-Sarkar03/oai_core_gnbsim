@@ -277,12 +277,14 @@ iperf Done.
 ```
 
 ## Analysing the Results
-You can recover the logs like this:
+You can check the logs of individual containers by executing the command
 ```
-$: docker logs oai-amf > /tmp/oai/gnbsim/amf.log 2>&1
-$: docker logs oai-smf > /tmp/oai/gnbsim/smf.log 2>&1
-$: docker logs oai-upf > /tmp/oai/gnbsim/upf.log 2>&1
-$: docker logs gnbsim > /tmp/oai/gnbsim/gnbsim.log 2>&1
+docker logs <container-name>
+
+example: 
+$ docker logs --follow oai-amf
+$ docker logs oai-smf
+$ docker logs oai-nrf
 ```
 
 ## Multiple UE deployment using `gnbsim`
