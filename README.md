@@ -282,7 +282,7 @@ You can check the logs of individual containers by executing the command
 docker logs <container-name>
 
 example: 
-$ docker logs --follow oai-amf
+$ docker logs --follow oai-amf	 
 $ docker logs oai-smf
 $ docker logs oai-nrf
 ```
@@ -336,16 +336,6 @@ truncated Sample output
 =======
 [2024-07-28T08:59:46.513945] [AMF] [amf_app] [info ]
 >>>>>>> f572957af645082c078cdccef4d61c5776a84268
-```
-### Recover the logs
-You can Recover the logs for one last time 
-```
-$: docker logs oai-amf > /tmp/oai/gnbsim/amf.log 2>&1
-$: docker logs oai-smf > /tmp/oai/gnbsim/smf.log 2>&1
-$: docker logs oai-upf > /tmp/oai/gnbsim/upf.log 2>&1
-$: docker logs gnbsim > /tmp/oai/gnbsim/gnbsim.log 2>&1
-$: docker logs gnbsim2 > /tmp/oai/gnbsim/gnbsim2.log 2>&1
-$: docker logs gnbsim3 > /tmp/oai/gnbsim/gnbsim3.log 2>&1
 ```
 
 ## Undeploy network functions
